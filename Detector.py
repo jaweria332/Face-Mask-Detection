@@ -24,3 +24,15 @@ batch_size = 32
 directory = "E:\\6th Semester\\AI Practical\\03 Face Mask Detector\\Face-Mask-Detection\\dataset"
 categories = ["with_mask","without_mask"]
 
+print("Loading images...")
+
+#defining variables
+data=[]
+labels =[]
+for category in categories:
+    #Getting path of images, one by one
+    path=os.path.join(directory,category)
+    for img in os.listdir(path):
+        img_path=os.path.join(path,img)
+        image=load_img(img_path,target_size=(224,224))
+        image=img_to_array(image)
