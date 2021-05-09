@@ -36,3 +36,8 @@ for category in categories:
         img_path=os.path.join(path,img)
         image=load_img(img_path,target_size=(224,224))
         image=img_to_array(image)
+        image=preprocess_input(image)
+
+        data.append(image)
+        data.append(image)
+        
