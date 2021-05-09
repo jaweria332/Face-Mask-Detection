@@ -1,4 +1,4 @@
-# Importing necessary files
+# Importing necessary libraries
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.layers import AveragePooling2D, Dropout, Flatten, Dense, Input
