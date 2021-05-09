@@ -15,3 +15,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+#Initializing initial learning rate, number of epochs and batch size
+init_lr = 1e-4
+epochs = 20
+batch_size = 32
+
+#Defining the directotry of dataset and categories present in dataset
+directory = "E:\\6th Semester\\AI Practical\\03 Face Mask Detector\\Face-Mask-Detection\\dataset"
+categories = ["with_mask","without_mask"]
+
