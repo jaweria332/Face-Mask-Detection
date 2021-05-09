@@ -72,3 +72,27 @@ headModel=Dense(2,activation="softmax")(headModel)
 #Place head model on the top of base model
 model=Model(inputs=baseModel.input,outputs=headModel)
 
+#loop over all layers in the base model and freeze them so they will not be updated during the first training process
+for layer in baseModel.layers:
+    layer.trainable=False
+
+#Compile the model
+print("Compiling model...")
+opt=Adam(lr=init_lr,decay=init_lr/epochs)
+model.compile(loss="binary_crossentropy",optimizer=opt,metrics=["accuracy"])
+
+
+#Train the head of the meytwork
+print("Training head...")
+h=model.fit(aug.flow(X_train,Y_train,batch_size=batch_size),steps_per_epoch=len(X_train)//batch_size,validation_data=(X_test,Y_test),validation_steps=len(X_test)//batch_size,epochs=epochs)
+
+
+#Making predictions on the testing set
+print("Evaluating network...")
+predInx=model.predict(X_test,batch_size=batch_size)
+
+#Finding label with the label of  largest predicted probability
+predInx=np.argmax(predInx,axis=1)
+
+#Showing a nicely formated classification report
+print(classification_report(Y_test.argmax(axis=1),predInx,target_names=lb.classes_))
