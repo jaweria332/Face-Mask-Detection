@@ -96,3 +96,21 @@ predInx=np.argmax(predInx,axis=1)
 
 #Showing a nicely formated classification report
 print(classification_report(Y_test.argmax(axis=1),predInx,target_names=lb.classes_))
+
+#Serialize the model
+print("Saving the model...")
+model.save("Detector",save_format="h5")
+
+#Plot the training loss and accuracy
+n=epochs
+plt.style.use("ggplot")
+plt.figure()
+plt.plot(np.arange(0,n),h.history["loss"],label="train_loss")
+plt.plot(np.arange(0,n),h.history["val_loss"],label="val_loss")
+plt.plot(np.arange(0,n),h.history["accuracy"],label="train_acc")
+plt.plot(np.arange(0,n),H.history["val_accuracy"],label="val_acc")
+plt.title("Training Loss and Accuracy")
+plt.xlabel("Number of Epochs")
+plt.ylabel("Loss/Accuracy")
+plt.legend(loc="lower left")
+plt.savefig("plot.png")
