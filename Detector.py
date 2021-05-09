@@ -52,7 +52,7 @@ labels=to_categorical(labels)
 data=np.array(data,dtype='float32')
 labels=np.array(labels)
 
-X_train,X_test,Y_train,Y_test=train_test_split(data,labels,test_size=0.20,statify=labels,random_state=42)
+X_train,X_test,Y_train,Y_test=train_test_split(data,labels,test_size=0.20,stratify=labels,random_state=42)
 
 
 #Construct Image data genertaor - create many image from single image
@@ -108,7 +108,7 @@ plt.figure()
 plt.plot(np.arange(0,n),h.history["loss"],label="train_loss")
 plt.plot(np.arange(0,n),h.history["val_loss"],label="val_loss")
 plt.plot(np.arange(0,n),h.history["accuracy"],label="train_acc")
-plt.plot(np.arange(0,n),H.history["val_accuracy"],label="val_acc")
+plt.plot(np.arange(0,n),h.history["val_accuracy"],label="val_acc")
 plt.title("Training Loss and Accuracy")
 plt.xlabel("Number of Epochs")
 plt.ylabel("Loss/Accuracy")
