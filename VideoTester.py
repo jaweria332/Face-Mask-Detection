@@ -61,7 +61,7 @@ weightspath=r"face_detector\res10_300x300_ssd_iter_140000.caffemodel"
 faceNet=cv2.dnn.readNet(prototxtpath,weightspath)
 
 #Load face mask detector model
-model=load_model("Detector.model")
+model=load_model("Detector")
 
 #Initializing the video stream
 print("Starting the video stream...")
